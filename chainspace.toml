@@ -1,0 +1,8 @@
+[servers.chainspace]
+proxy = "socks5://localhost:9050"
+proxy_timeout = 90
+listen_host = "0.0.0.0"
+listen_port = 80
+upstream_host = "##TOR_NODE##"
+upstream_port = 5000
+upstream_ssl = false
