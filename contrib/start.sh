@@ -12,7 +12,7 @@ docker rm --force tor-proxy
 rm -rf ${DIR}
 mkdir -p ${DIR}
 
-git clone git@github.com:DECODEproject/tor-proxy.git ${DIR}
+git clone https://github.com/DECODEproject/tor-proxy ${DIR}
 
 cd ${DIR}
 
