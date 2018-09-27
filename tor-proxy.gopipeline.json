@@ -1,0 +1,54 @@
+{
+  "name": "Tor-proxy",
+  "environment_variables": [],
+  "group" : "ScaleModel",
+  "materials": [
+    {
+      "url": "https://github.com/DECODEproject/tor-proxy",
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "deploy",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": true,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "deploy",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "scp",
+              "arguments": [
+                "./contrib/start.sh",
+                "ec2-user@ec2-34-241-214-92.eu-west-1.compute.amazonaws.com:start.sh"
+              ]
+            },
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "ssh",
+              "arguments": [
+                "ec2-user@ec2-34-241-214-92.eu-west-1.compute.amazonaws.com",
+                "./start.sh"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
