@@ -1,6 +1,9 @@
 {
   "name": "Tor-proxy",
-  "environment_variables": [],
+  "environment_variables": [{
+    "name": "DECODE_NODE",
+    "value": "decode02"
+  }],
   "group" : "ScaleModel",
   "materials": [
     {
@@ -40,10 +43,10 @@
               "type": "exec",
               "run_if": "passed",
               "on_cancel" : null,
-              "command": "ssh",
+              "command": "sh",
               "arguments": [
-                "ec2-user@ec2-34-241-214-92.eu-west-1.compute.amazonaws.com",
-                "./start.sh"
+                "-c",
+                "ssh ec2-user@ec2-34-241-214-92.eu-west-1.compute.amazonaws.com ./start.sh $DECODE_NODE"
               ]
             }
           ]

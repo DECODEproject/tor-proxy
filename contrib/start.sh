@@ -2,7 +2,12 @@
 # set -x
 DIR=~/tor-proxy
 
-TOR_NODE="dszj4sila655fk3s.onion"
+TOR_NODE="$1"
+
+if [ -z "$1" ] || [ "$1" = "decode02" ]; then
+  TOR_NODE="dszj4sila655fk3s.onion"
+fi
+
 if [ "$1" = "decode03" ]; then
   TOR_NODE="w454lnckcbqrfmpx.onion"
 fi
